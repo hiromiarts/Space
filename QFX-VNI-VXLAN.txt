@@ -1,0 +1,45 @@
+interfaces {
+          $Phy-INTERFACE {
+          flexible-vlan-tagging;
+          mtu 9216;
+          encapsulation flexible-ethernet-services;
+          unit $unit {
+             encapsulation vlan-bridge;
+             vlan-id $vlan;
+    }
+    }
+}
+
+protocols {
+    evpn {
+        vni-options {
+            vni $vni_no {
+                vrf-target export $community;
+            }
+        }
+        encapsulation vxlan;
+        extended-vni-list $vni_no;
+        multicast-mode ingress-replication;
+    }
+}
+
+vlans {
+     $tenant_name {
+        interface $Phy-INTERFACE.$unit;
+        vxlan {
+            vni $vni_no;
+            ingress-node-replication;
+        }
+    }
+}
+
+policy-options {
+policy-statement imp {
+    term $term_no {
+        from community  $target_community;
+        then accept;
+    }
+ }
+ community $target_community members $community;
+}
+
