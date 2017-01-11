@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?><cli-configlets>
+<cli-configlet>
+<!-- mandatory --><name>QFX-Example 1</name>
+<category>Examples-interface</category>
+<context>/device</context>
+<!-- mandatory --><device-family>QFX</device-family>
+<description>Single Execution - Port Description Example</description>
+<!-- mandatory --><execution-type>Grouped</execution-type>
+<preview-show-parameters>true</preview-show-parameters>
+<preview-show-configuration>true</preview-show-configuration>
+<postview-show-parameters>true</postview-show-parameters>
+<postview-show-configuration>true</postview-show-configuration>
+
+<cli-configlet-pages><!-- At least one configlet page required -->
+<cli-configlet-page>
+<page-number>1</page-number>
+<!-- mandatory --><cli-text>interfaces {
+          $pinterface {
+          description
+          &quot;$description&quot;;
+          }
+          }
+        </cli-text>
+</cli-configlet-page>
+</cli-configlet-pages>
+
+<cli-configlet-params>
+<cli-configlet-param>
+<!-- mandatory --><parameter>pinterface</parameter>
+<!-- mandatory --><display-name>pinterface</display-name>
+<!-- mandatory --><parameter-type>Text Field</parameter-type>
+<description/>
+<parameter-scope>Entity Specific</parameter-scope>
+<regex-value/>
+<configured-value-xpath/>
+<default-value>ge-0/0/3</default-value>
+<!-- mandatory --><parameter-order>1</parameter-order>
+</cli-configlet-param>
+
+<cli-configlet-param>
+<!-- mandatory --><parameter>description</parameter>
+<!-- mandatory --><display-name>description</display-name>
+<!-- mandatory --><parameter-type>Text Field</parameter-type>
+<description/>
+<parameter-scope>Entity Specific</parameter-scope>
+<regex-value/>
+<configured-value-xpath/>
+<default-value/>
+<!-- mandatory --><parameter-order>10</parameter-order>
+</cli-configlet-param>
+
+</cli-configlet-params>
+
+</cli-configlet>
+
+
+
+</cli-configlets>
